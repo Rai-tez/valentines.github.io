@@ -10,15 +10,62 @@
   .gradient {
     background-image: linear-gradient(to bottom right, pink, white);
   }
-  
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   }
-</style>
 
+ * {
+  box-sizing: border-box;
+  }
+
+body { 
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Pacifico', cursive;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.heart {
+  position: fixed;
+  font-size: 1.5rem;
+  top: -1vh;
+  transform: translateY(0);
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  from {
+     transform: translateY(0vh) translateX(-10vw); 
+  }
+  to {
+     transform: translateY(105vh) translateX(10vw); 
+  }
+} 
+</style>
+<script>
+  function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+  
+  heart.innerText = '💗';
+  
+  document.body.appendChild(heart);
+  
+  setTimeout(() => {
+              heart.remove();
+              }, 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap" rel="stylesheet">
